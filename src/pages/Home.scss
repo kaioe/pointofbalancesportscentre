@@ -1,0 +1,38 @@
+.Entrance {
+	width: 100%;
+}
+
+.home-hero {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 4rem 2rem 2rem;
+	text-align: center;
+}
+
+.home-hero h1 {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+	color: #2c3e50;
+	font-weight: 700;
+}
+
+.home-hero p {
+	font-size: 1.3rem;
+	color: #666;
+	max-width: 700px;
+	margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+	.home-hero {
+		padding: 2rem 1rem 1rem;
+	}
+
+	.home-hero h1 {
+		font-size: 2rem;
+	}
+
+	.home-hero p {
+		font-size: 1.1rem;
+	}
+}

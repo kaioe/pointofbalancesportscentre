@@ -1,0 +1,23 @@
+.logbook-3d-showcase {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	background-color: #ddda;
+
+	border-radius: 8px;
+	.logbook-showcase-title {
+		font-size: 2em;
+		font-weight: 700;
+		width: 150px;
+		text-align: right;
+		color: #333;
+	}
+	.logbook-wrapper {
+		.logbook-notebook {
+			box-shadow: 2px 2px 15px 0 rgba(0, 0, 0, 0.4);
+		}
+	}
+}
