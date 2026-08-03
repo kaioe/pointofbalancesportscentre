@@ -34,4 +34,3 @@ jobs:
           local_path: dist/
           remote_path: ${{ secrets.CLOUDWAYS_APP_PATH }}
           sftp_only: true
-          delete_remote_files: true
