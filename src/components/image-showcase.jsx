@@ -79,15 +79,17 @@ export const PhotoStackCard = React.forwardRef(({ className, images, category, t
 			<div className="z-10 showcase-card-header">
 				<p className="text-xs font-semibold uppercase text-muted-foreground">{category}</p>
 				<h2 className="mt-1 text-3xl font-bold text-card-title otto">{title}</h2>
-				<div className="mt-2 flex gap-2 flex-wrap">
-					<button onClick={handleDescriptionClick} className="inline-block text-sm rounded-full cursor-pointer description-link-pill" type="button">
-						Description
-					</button>
-					{website && (
-						<button onClick={handleWebsiteClick} className="inline-block text-sm rounded-full cursor-pointer description-link-pill" type="button">
-							Website
+				<div className="mt-2 flex flex-col items-start gap-2">
+					<div className="flex gap-2">
+						<button onClick={handleDescriptionClick} className="inline-block text-sm rounded-full cursor-pointer description-link-pill" type="button">
+							Description
 						</button>
-					)}
+						{website && (
+							<button onClick={handleWebsiteClick} className="inline-block text-sm rounded-full cursor-pointer description-link-pill" type="button">
+								Website
+							</button>
+						)}
+					</div>
 					{pills && pills.map((pill, i) => (
 						<button key={i} onClick={(e) => { e.stopPropagation(); if (onPillClick) onPillClick(pill); }} className="inline-block text-sm rounded-full cursor-pointer description-link-pill" type="button">
 							{pill.label}

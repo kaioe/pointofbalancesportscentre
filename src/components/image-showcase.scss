@@ -5,6 +5,10 @@
 }
 .showcase-card {
 	position: relative;
+	.showcase-image-stack-container {
+		/* Shift the photo stack slightly to the right */
+		right: -30px;
+	}
 	.showcase-card-header {
 		position: relative;
 		padding: 15px;
