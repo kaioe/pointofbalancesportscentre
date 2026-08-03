@@ -24,13 +24,13 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Install sshpass
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq sshpass
+
       - name: Deploy to Cloudways via Rsync
-        uses: Burnett01/rsync-deployments@7.0.1
-        with:
-          switches: -vrtz --delete --no-perms --no-owner --no-group --omit-dir-times
-          path: dist/
-          remote_path: ${{ secrets.CLOUDWAYS_APP_PATH }}
-          remote_host: ${{ secrets.CLOUDWAYS_FTP_HOST }}
-          remote_user: ${{ secrets.CLOUDWAYS_FTP_USERNAME }}
-          remote_key: ${{ secrets.CLOUDWAYS_SSH_KEY }}
-          remote_port: 22
+        run: |
+          sshpass -p "${{ secrets.CLOUDWAYS_FTP_PASSWORD }}" rsync -vrtz --delete \
+            --no-perms --no-owner --no-group --omit-dir-times \
+            -e "ssh -o StrictHostKeyChecking=no -o ConnectTimeout=10" \
+            dist/ \
+            ${{ secrets.CLOUDWAYS_FTP_USERNAME }}@${{ secrets.CLOUDWAYS_FTP_HOST }}:${{ secrets.CLOUDWAYS_APP_PATH }}
