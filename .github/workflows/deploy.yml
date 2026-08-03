@@ -24,13 +24,13 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Install sshpass
-        run: sudo apt-get update -qq && sudo apt-get install -y -qq sshpass
-
-      - name: Deploy to Cloudways via Rsync
-        run: |
-          sshpass -p "${{ secrets.CLOUDWAYS_FTP_PASSWORD }}" rsync -vrtz --delete \
-            --no-perms --no-owner --no-group --omit-dir-times \
-            -e "ssh -o StrictHostKeyChecking=no -o ConnectTimeout=10" \
-            dist/ \
-            ${{ secrets.CLOUDWAYS_FTP_USERNAME }}@${{ secrets.CLOUDWAYS_FTP_HOST }}:${{ secrets.CLOUDWAYS_APP_PATH }}
+      - name: Deploy to Cloudways via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+          username: ${{ secrets.CLOUDWAYS_FTP_USERNAME }}
+          server: ${{ secrets.CLOUDWAYS_FTP_HOST }}
+          port: 22
+          password: ${{ secrets.CLOUDWAYS_FTP_PASSWORD }}
+          local_path: dist/*
+          remote_path: ${{ secrets.CLOUDWAYS_APP_PATH }}
+          sftp_only: true
