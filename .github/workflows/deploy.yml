@@ -25,17 +25,11 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Deploy to Cloudways via SFTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.CLOUDWAYS_FTP_HOST }}
-          username: ${{ secrets.CLOUDWAYS_FTP_USERNAME }}
-          password: ${{ secrets.CLOUDWAYS_FTP_PASSWORD }}
-          protocol: sftp
-          port: 22
-          local-dir: dist/
-          server-dir: ${{ secrets.CLOUDWAYS_APP_PATH }}
-          timeout: 60000
-          exclude: |
-            **/.DS_Store
-            **/.git*/**
+      - name: Deploy to Cloudways via SFTP (lftp mirror)
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+          lftp -u "${{ secrets.CLOUDWAYS_FTP_USERNAME }}","${{ secrets.CLOUDWAYS_FTP_PASSWORD }}" \
+            -e "set sftp:auto-confirm yes; set net:timeout 30; \
+            mirror -R --delete --verbose ${{ github.workspace }}/dist/ ${{ secrets.CLOUDWAYS_APP_PATH }}; \
+            bye" \
+            sftp://${{ secrets.CLOUDWAYS_FTP_HOST }}
