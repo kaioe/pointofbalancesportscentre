@@ -26,12 +26,16 @@ jobs:
         run: npm run build
 
       - name: Deploy to Cloudways via SFTP
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          username: ${{ secrets.CLOUDWAYS_FTP_USERNAME }}
           server: ${{ secrets.CLOUDWAYS_FTP_HOST }}
-          port: 22
+          username: ${{ secrets.CLOUDWAYS_FTP_USERNAME }}
           password: ${{ secrets.CLOUDWAYS_FTP_PASSWORD }}
-          local_path: dist/
-          remote_path: ${{ secrets.CLOUDWAYS_APP_PATH }}
-          sftp_only: true
+          protocol: sftp
+          port: 22
+          local-dir: dist/
+          server-dir: ${{ secrets.CLOUDWAYS_APP_PATH }}
+          timeout: 60000
+          exclude: |
+            **/.DS_Store
+            **/.git*/**
