@@ -6,8 +6,12 @@
 .showcase-card {
 	position: relative;
 	.showcase-image-stack-container {
+		/* Base position */
+		right: 0;
+	}
+	&.has-pills .showcase-image-stack-container {
 		/* Shift the photo stack to the right so it clears the pill column */
-		right: -60px;
+		right: -95px;
 		img {
 			right: 0 !important;
 		}
