@@ -12,6 +12,7 @@
 	&.has-pills .showcase-image-stack-container {
 		/* Shift the photo stack to the right so it clears the pill column */
 		right: -60px;
+		top: 110px;
 		img {
 			right: 0 !important;
 		}
