@@ -55,6 +55,14 @@ const showcaseData = [
 		logo: "/imgs/ui/bjjlc-logo.png",
 		website: "http://bjjlotusclub.com/programs/boxing-fitness",
 	},
+	{
+		category: "Martial Arts",
+		title: "KUNG FU",
+		subtitle: "Kung Fu Hung Gar Australia teaches authentic traditional Hung Gar style of Kung Fu for children and adults in a disciplined and respectful training environment. The school is founded and led by Gam Bok Yin as an Australian branch of Hung Kuen Academy Hong Kong, which he established more than 30 years ago. We teach Hung Gar based on the Chiu Wai family style, with training designed to build strong foundations, coordination, discipline, respect, and character. Whether you are a parent looking for children's martial arts classes, an adult beginner, or an experienced practitioner seeking deeper traditional training, the school offers a clear and structured path into authentic Hung Gar.",
+		images: ["/imgs/ui/kungfu-1.webp", "/imgs/ui/kungfu-2.webp", "/imgs/ui/kungfu-3.webp"],
+		logo: "/imgs/ui/kungfu-logo.png",
+		website: "https://kungfuhunggaraustralia.com",
+	},
 ];
 
 function ImageShowcase() {
