@@ -69,7 +69,7 @@ export const PhotoStackCard = React.forwardRef(({ className, images, category, t
 	return (
 		<motion.div
 			ref={ref}
-			className={cn("group relative flex w-80 cursor-pointer flex-col justify-start rounded-xl bg-card p-6 shadow-xl showcase-card", pills ? "h-[26rem] has-pills" : "h-72", "transition-colors duration-300 ease-in-out hover:bg-card/90", className)}
+			className={cn("group relative flex h-80 w-80 cursor-pointer flex-col justify-start rounded-xl bg-card p-6 shadow-xl showcase-card", pills ? "has-pills" : "", "transition-colors duration-300 ease-in-out hover:bg-card/90", className)}
 			variants={cardVariants}
 			animate={isActive ? "active" : "inactive"}
 			// The hover animation is now within a nested motion div to avoid conflicts
