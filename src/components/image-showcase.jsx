@@ -69,7 +69,7 @@ export const PhotoStackCard = React.forwardRef(({ className, images, category, t
 	return (
 		<motion.div
 			ref={ref}
-			className={cn("group relative flex w-80 cursor-pointer flex-col justify-start rounded-xl bg-card p-6 shadow-xl showcase-card", pills ? "h-96 has-pills" : "h-72", "transition-colors duration-300 ease-in-out hover:bg-card/90", className)}
+			className={cn("group relative flex w-80 cursor-pointer flex-col justify-start rounded-xl bg-card p-6 shadow-xl showcase-card", pills ? "h-[30rem] has-pills" : "h-72", "transition-colors duration-300 ease-in-out hover:bg-card/90", className)}
 			variants={cardVariants}
 			animate={isActive ? "active" : "inactive"}
 			// The hover animation is now within a nested motion div to avoid conflicts
@@ -79,7 +79,7 @@ export const PhotoStackCard = React.forwardRef(({ className, images, category, t
 			<div className="z-10 showcase-card-header">
 				<p className="text-xs font-semibold uppercase text-muted-foreground">{category}</p>
 				<h2 className="mt-1 text-3xl font-bold text-card-title otto">{title}</h2>
-				<div className="mt-2 flex flex-col items-start gap-2">
+				<div className="mt-2 flex flex-col items-start gap-1">
 					<div className="flex gap-2">
 						<button onClick={handleDescriptionClick} className="inline-block text-sm rounded-full cursor-pointer description-link-pill" type="button">
 							Description
